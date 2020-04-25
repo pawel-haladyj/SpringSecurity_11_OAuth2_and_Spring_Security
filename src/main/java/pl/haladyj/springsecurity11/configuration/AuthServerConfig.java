@@ -28,10 +28,16 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients
                 .inMemory()
-                .withClient("client1")
-                .secret("secret1")
-                .scopes("read")
-                .authorizedGrantTypes("password");
+                    .withClient("client1")
+                    .secret("secret1")
+                    .scopes("read")
+                    .authorizedGrantTypes("password")
+                .and()
+                    .withClient("client")
+                    .secret("secret2")
+                    .scopes("read")
+                    .authorizedGrantTypes("authorization_code")
+                    .redirectUris("http://locallhost:9090");
 
 
     }
